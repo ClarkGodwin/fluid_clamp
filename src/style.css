@@ -32,6 +32,9 @@
     --spacing-py-section : clamp(1rem,0.630rem + 1.852vw,2.25rem);
     /*vertical padding value of the section tag components*/
 
+    --spacing-pr-button : clamp(0rem,-4.514rem + 22.571vw,4.5rem);
+    /*value of the padding right of the div that contains the add button (+) only for screens <640px to give it a position to the left right under the min input for elements sizes*/
+
     --spacing-px-section : clamp(0.5rem,-0.019rem + 2.593vw,2.25rem);
     /*horizontal padding value of the section tag in components*/
 
