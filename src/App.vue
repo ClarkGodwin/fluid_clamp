@@ -1,8 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Settings, CirclePlay } from '@lucide/vue';
+</script>
 
 <template>
-  <section id="header" class="text-frosted text-center text-header">
+  <section id="header" class="text-frosted text-center text-header flex gap-home justify-center items-center *:cursor-pointer">
     <h1>Fluid Clamp</h1>
+    <CirclePlay class="size-(--text-header)"/>
+    <Settings class="size-(--text-header)"/>
   </section>
 
   <section id="home" class="my-5 bg-surface-300 w-full rounded-2xl py-py-home px-px-home text-home *:text-frosted">

@@ -32,6 +32,9 @@
     --spacing-px-home : clamp(0.5rem,-0.019rem + 2.593vw,2.25rem);
     /*horizontal padding value of the home section in the app.vue component*/
 
+    --spacing-home : clamp(1.875rem,0.764rem + 5.556vw,5.625rem);
+    /*gap between the elements in the header in app.vue*/
+
 
      /*------------------TEXT'S SIZES------------------*/
 
