@@ -1,42 +1,29 @@
-# fluid_clamp
+ Welcome in our Fluid Clamp website. 
 
-This template should help get you started developing with Vue 3 in Vite.
+ Its goal is to make the design responsivness a bit easier for developpers. 
+ It's always annoying how we have to change the value of an element (either its width, height, gap, text's size) so that it looks clean on all screen sizes .
+ 
+ How it works:
+ 
+ - The values on which the calculation is based is expressed only in pixel  
+ 
+ - You first pick the maximum and the minimum screen size for your web app.  To be more specific, above the maximum (you chose) on which the look of the website won't change and same for under the minimum
+ 
+ - You then pick the element'size corresponding to the maximum and then the minimum screen size 
+ 
+ - Click on the clamp button, the clamp value will be given to you, copy it, give it to the element and its size will adjust across the screen sizes you chose
 
-## Recommended IDE Setup
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Recommended Browser Setup
+It uses the rem(with 16px as the baseline by  default)  and goes  through 3  steps
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Step 1: calculates the  difference between the max and the min pixels of the  element(text,  button, ...). The result is called, object_diff
 
-## Type Support for `.vue` Imports in TS
+Step 2: calculates the difference between the max  and  min of screen sizes ( by  default, 1400px - 320px, just personal preferences,you can change them directly in the input or choose your default preferences in the settings). The result is called  screen_diff
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Step 3: calculates the ratio:  object_diff/screen_diff*100 (the result is in vw). The result will  be called ratio
 
-## Customize configuration
+Last step: gives the static rem value that we'll  add to the ratio. The formula is : 16px-(ratio*min_screen_size/100) , the result will be divided by 16 to get the value in rem, and it'll be called, fixed_base
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+The end result  will look  like this, clamp(min_px, fixed_base + ratio, max_px)
+min_px, max_px and fixed_base in rem and ratio in vw
