@@ -1,9 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1 class="text-frosted text-center text-header">Fluid Clamp</h1>
+  <section id="header" class="text-frosted text-center text-header">
+    <h1>Fluid Clamp</h1>
+  </section>
 
-  <section class="mt-5 bg-surface-300 w-full rounded-2xl py-py-home px-px-home text-home *:text-frosted">
+  <section id="home" class="my-5 bg-surface-300 w-full rounded-2xl py-py-home px-px-home text-home *:text-frosted">
     Welcome in our <span>Fluid Clamp</span> website. <br>
     Its goal is to make the design responsivness a bit easier for developpers.
     It's always annoying how we have to change the value of an element (either its width, height, gap, text's size) so that it looks clean on all screen sizes <br> <br> <br>
