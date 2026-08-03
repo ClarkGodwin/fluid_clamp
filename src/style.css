@@ -26,9 +26,18 @@
     --width-base : clamp(18.75rem,9.491rem + 46.296vw,50rem);
     /*The fluid  of all the component inside the #app in index.html*/
 
+    --spacing-py-home : clamp(1rem,0.630rem + 1.852vw,2.25rem);
+    /*vertical padding value of the home section in the app.vue component*/
+
+    --spacing-px-home : clamp(0.5rem,-0.019rem + 2.593vw,2.25rem);
+    /*horizontal padding value of the home section in the app.vue component*/
+
 
      /*------------------TEXT'S SIZES------------------*/
 
     --text-header : clamp(1rem,0.741rem + 1.296vw,1.875rem);
     /*The size's value of the header*/
+
+     --text-home : clamp(0.75rem,0.676rem + 0.370vw,1rem);
+     /*size of the text in the home page*/
 }
