@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+     /*------------------COLORS------------------*/
+
+    --color-frosted: var(--color-green-500);
+    --color-surface-100: #ffffff;
+    /* Pure foreground: bright white cards, inputs, menus */
+    --color-surface-200: #f8fafc;
+    /* Very subtle white/gray: for table lines or secondary elements */
+    --color-surface-300: #f1f5f9;
+    /* Light structuring gray: for large background containers */
+    --color-surface-400: #e2e8f0;
+    /* Page background and borders: gives solid grounding and separates blocks */
+
+    /* Bright text */
+    --color-text-main: #0f172a;
+    /* Very dark slate, almost black */
+    --color-text-muted: #475569;
+    /* Medium gray for labels and subtitles */
+}
