@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { useClalmpStore } from '@/stores/clamp';
+import { ClipboardCheck, Clipboard } from '@lucide/vue';
+import { useClipboard } from '@/utils/useClipboard';
 
 const clamp = useClalmpStore()
+
+const clipboard = useClipboard()
+
 </script>
 
 <template>
@@ -11,11 +16,21 @@ const clamp = useClalmpStore()
             The min value can't go beyond its max value - 1 and the max value can't go under its min + 1
         </div> <br>
 
-        <div>
-            <span class="text-frosted font-bold">Result : </span>
+        <div class="text-frosted font-bold">Result : </div>
+
+        <!-- Result's display -->
+        <div class="flex items-center gap-8 text-home">
+            <input type="text" readonly class=" w-full" v-model="clamp.clamp">
+            <Clipboard @click="clipboard.copy(clamp.clamp)" v-if="!clipboard.isCopied.value" class="size-(--text-header) inline cursor-pointer"/>
+            <ClipboardCheck v-else class="size-(--text-header) inline cursor-pointer"/>
+
         </div>
     </section>
 
+
+    <!-- Input of the required datas to start the calculation -->
+     
+    <!-- First the screen sizes -->
     <section class=" mb-7 bg-surface-300 text-[14px] sm:text-clamp rounded-2xl flex flex-col gap-5 sm:gap-3 sm:flex-row justify-between items-center py-py-section px-px-section">
         <h2 class="text-frosted w-full">Screen Sizes : </h2>
         <span class="input-container">
@@ -28,6 +43,7 @@ const clamp = useClalmpStore()
         </span>
     </section>
 
+    <!-- And right after, the element's sizes -->
     <section class="bg-surface-300 text-[14px] sm:text-clamp rounded-2xl py-py-section px-px-section">
         <div class="flex flex-col gap-5 sm:gap-3 sm:flex-row justify-between items-center ">
             <h2 class="text-frosted w-full">Element Sizes : </h2>
@@ -41,6 +57,7 @@ const clamp = useClalmpStore()
             </span>
         </div>
 
+        <!-- to add different lines of element's sizes based on the same screen sizes -->
         <div class="flex justify-self-end items-start mt-3 pr-pr-button sm:pr-0">
             <button class="bg-frosted  text-white text-[20px] w-8.75 font-bold cursor-pointer rounded-lg">+</button>
         </div>
