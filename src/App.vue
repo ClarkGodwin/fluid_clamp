@@ -10,10 +10,6 @@ import { Settings, CirclePlay } from '@lucide/vue';
       <CirclePlay class="size-(--text-header)"/>
     </RouterLink>
 
-    <RouterLink :to="{ name: 'settings'}">
-      <Settings class="size-(--text-header)"/>
-    </RouterLink>
-
   </header>
 
   <RouterView/>

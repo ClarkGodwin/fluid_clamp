@@ -6,11 +6,9 @@ import { CirclePlay, Settings } from '@lucide/vue';
   <section class="bg-surface-300 w-full rounded-2xl py-py-section px-px-section text-home *:text-frosted">
     Welcome in our <span>Fluid Clamp</span> website. <br>
     Its goal is to make the design responsivness a bit easier for developpers.
-    It's always annoying how we have to change the value of an element (either its width, height, gap, text's size) so that it looks clean on all screen sizes <br> <br> <br>
+    It's always annoying how we have to change the value of an element (either its width, height, gap, text's size) so that it looks clean on all screen sizes <br> <br> 
 
     <span><CirclePlay class="size-(--text-home) inline"/> : </span> to start using the clamp <br> <br> <br>
-
-    <span><Settings class="size-(--text-home) inline"/> : </span> to go to the setting's page  <br> <br> <br>
 
     <span>How it works : </span> <br> <br>
 

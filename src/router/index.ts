@@ -11,11 +11,6 @@ const routes = [
     name: 'clamp',
     component: () => import("@/components/Clamp.vue")
   },
-  { 
-    path: '/settings', 
-    name: 'settings',
-    component: () => import('@/components/Settings.vue')
-  },
 ];
 
 
