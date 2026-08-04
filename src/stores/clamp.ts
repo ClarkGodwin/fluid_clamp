@@ -8,8 +8,10 @@ export const useClalmpStore = defineStore('clamp', () => {
   const minScreen = ref(320)
 
   //For the element's sizes
-  const maxElement = ref(0)
-  const minElement = ref(0)
+  const maxElement = ref(30)
+  const minElement = ref(20)
+
+  // const showMaxScreen = computed(() => { return })
 
   return {
     maxScreen,
