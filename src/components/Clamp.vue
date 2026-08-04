@@ -29,6 +29,7 @@ const lineNumber = ref(2)
 /**
  * Build a CSS clamp string from the input values.
  * This logic is kept in the component so each extra line can reuse the same calculation.
+ * Needed because stores don't create new instances
  */
 function buildClampValue(
   minScreen: number,
@@ -45,13 +46,6 @@ function buildClampValue(
 
   return `clamp(${roundRem(minElement)}rem, ${roundRem(fixedBase)}rem + ${Math.round(ratio * 1000) / 1000}vw, ${roundRem(maxElement)}rem)`
 }
-
-/**
- * Compute the clamp string for the main result using the base values from the store.
- */
-const clampText = computed(() =>
-  buildClampValue(clamp.minScreen, clamp.maxScreen, clamp.minElement, clamp.maxElement)
-)
 
 /**
  * Compute the clamp string for an additional line using that line's own element values.
@@ -95,12 +89,12 @@ function resetLines() {
 
     <div class="text-frosted font-bold">Result : </div>
 
-    <div class="flex items-center gap-2 sm:gap-5 text-home">
+    <div class="flex items-center gap-2 sm:gap-5">
       <!-- Show the main result as #1 only when multi-line mode is active -->
       <span v-if="multiLines" class="text-frosted font-bold">#1: </span>
-      <input type="text" readonly class="w-full" :value="clampText" />
+      <input type="text" readonly class="w-full" :value="clamp.clamp" />
       <Clipboard
-        @click="clipboard.copy(clampText)"
+        @click="clipboard.copy(clamp.clamp)"
         v-if="!clipboard.isCopied.value"
         class="size-(--text-header) inline cursor-pointer"
       />
@@ -112,7 +106,7 @@ function resetLines() {
       <div
         v-for="line in lines"
         :key="line.key"
-        class="flex items-center gap-2 sm:gap-5 text-home my-3"
+        class="flex items-center gap-2 sm:gap-5 my-3"
       >
         <span class="text-frosted font-bold">#{{ line.key }}: </span>
         <input type="text" readonly class="w-full" :value="getLineClamp(line)" />
@@ -128,7 +122,7 @@ function resetLines() {
 
   <!-- Screen sizes section -->
   <section
-    class="mb-7 bg-surface-300 text-[14px] sm:text-clamp rounded-2xl flex flex-col gap-5 sm:gap-3 sm:flex-row justify-between items-center py-py-section px-px-section"
+    class="mb-7 bg-surface-300 text-clamp sm:text-clamp rounded-2xl flex flex-col gap-5 sm:gap-3 sm:flex-row justify-between items-center py-py-section px-px-section"
   >
     <h2 class="text-frosted w-full">Screen Sizes : </h2>
 
@@ -144,7 +138,7 @@ function resetLines() {
   </section>
 
   <!-- Element sizes section -->
-  <section class="bg-surface-300 text-[14px] sm:text-clamp rounded-2xl py-py-section px-px-section">
+  <section class="bg-surface-300 text-clamp sm:text-clamp rounded-2xl py-py-section px-px-section">
     <div class="flex flex-col gap-5 sm:gap-3 sm:flex-row justify-between items-center">
       <h2 class="text-frosted w-full">Element Sizes : </h2>
 
