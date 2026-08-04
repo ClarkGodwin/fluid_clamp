@@ -6,8 +6,14 @@ const clamp = useClalmpStore()
 
 <template>
     <section class="mb-7 bg-surface-300 py-py-section px-px-section text-home">
-        <span class="text-frosted font-bold">Information : </span>
-        The min value can't go beyond its max value - 1 and the max value can't go under its min + 1
+        <div>
+            <span class="text-frosted font-bold">Information : </span>
+            The min value can't go beyond its max value - 1 and the max value can't go under its min + 1
+        </div> <br>
+
+        <div>
+            <span class="text-frosted font-bold">Result : </span>
+        </div>
     </section>
 
     <section class=" mb-7 bg-surface-300 text-[14px] sm:text-clamp rounded-2xl flex flex-col gap-5 sm:gap-3 sm:flex-row justify-between items-center py-py-section px-px-section">
@@ -39,4 +45,5 @@ const clamp = useClalmpStore()
             <button class="bg-frosted  text-white text-[20px] w-8.75 font-bold cursor-pointer rounded-lg">+</button>
         </div>
     </section>
+    
 </template>
