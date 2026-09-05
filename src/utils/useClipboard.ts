@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 export function useClipboard() {
   const isCopied = ref(false)
@@ -7,11 +7,11 @@ export function useClipboard() {
     try {
       await navigator.clipboard.writeText(text)
       isCopied.value = true
-      
+
       setTimeout(() => {
         isCopied.value = false
       }, 2000)
-      
+
       return true
     } catch (error) {
       console.error('Erreur lors de la copie :', error)
@@ -20,5 +20,5 @@ export function useClipboard() {
     }
   }
 
-  return { copy, isCopied }
+  return reactive({ copy, isCopied })
 }

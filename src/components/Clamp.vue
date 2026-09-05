@@ -3,12 +3,16 @@
 import { useClalmpStore } from '@/stores/clamp'
 import { ClipboardCheck, Clipboard } from '@lucide/vue'
 import { useClipboard } from '@/utils/useClipboard'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 interface ClampLine {
   key: number
   maxElement: number
   minElement: number
+  clipboard: {
+    copy: (text: string) => Promise<boolean>
+    isCopied: boolean
+  }
 }
 
 // Create the main store instance that holds the base screen and element values.
@@ -64,6 +68,7 @@ function addLine() {
     key: lineNumber.value++,
     maxElement: clamp.maxElement,
     minElement: clamp.minElement,
+    clipboard: useClipboard(), 
   })
 }
 
@@ -95,7 +100,7 @@ function resetLines() {
       <input type="text" readonly class="w-full" :value="clamp.clamp" />
       <Clipboard
         @click="clipboard.copy(clamp.clamp)"
-        v-if="!clipboard.isCopied.value"
+        v-if="!clipboard.isCopied"
         class="size-(--text-header) inline cursor-pointer"
       />
       <ClipboardCheck v-else class="size-(--text-header) inline cursor-pointer" />
@@ -111,8 +116,8 @@ function resetLines() {
         <span class="text-frosted font-bold">#{{ line.key }}: </span>
         <input type="text" readonly class="w-full" :value="getLineClamp(line)" />
         <Clipboard
-          @click="clipboard.copy(getLineClamp(line))"
-          v-if="!clipboard.isCopied.value"
+          @click="line.clipboard.copy(getLineClamp(line))"
+          v-if="!line.clipboard.isCopied"
           class="size-(--text-header) inline cursor-pointer"
         />
         <ClipboardCheck v-else class="size-(--text-header) inline cursor-pointer" />
